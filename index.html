@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café Lumière — A Little Taste of France</title>
+
+  <!-- 
+    GOOGLE FONTS
+    "Cormorant Garamond" = the elegant serif used for headings
+    "Jost" = the clean sans-serif used for body text
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Our own stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- =========================================================
+       NAVBAR
+       To change the café name, edit the text inside .logo below.
+  ========================================================== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="logo">Café Lumière</a>
+
+      <!-- Hamburger button, only visible on mobile (controlled in script.js) -->
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#reserve">Reserve</a>
+        <a href="#contact">Contact</a>
+        <a href="#reserve" class="btn btn-outline nav-cta">Reserve a Table</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       HERO SECTION
+       Change the headline / description text directly below.
+       To replace the photo, change the URL in the CSS file:
+       look for ".hero-image img" — see style.css for the src, 
+       or edit the src attribute right here on the <img> tag.
+  ========================================================== -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-kicker">Paris-style café, made in Egypt</p>
+        <h1>A Little Taste<br>of France</h1>
+        <p class="hero-desc">
+          Fresh croissants, slow-brewed coffee and a warm room that feels like a
+          quiet corner of the Left Bank. Café Lumière is a small French café
+          serving pastries, coffee and refreshing drinks in a cozy, elegant setting.
+        </p>
+        <div class="hero-buttons">
+          <a href="#menu" class="btn btn-primary">View Menu</a>
+          <a href="#reserve" class="btn btn-outline">Reserve a Table</a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <!-- Change this URL to replace the image -->
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80" alt="Café Lumière terrace with outdoor seating">
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       ABOUT SECTION
+       Edit the paragraph text below to change the café's story.
+  ========================================================== -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-image">
+        <!-- Change this URL to replace the image -->
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80" alt="Fresh pastries and coffee on a café table">
+      </div>
+      <div class="about-text">
+        <p class="section-kicker">Our Story</p>
+        <h2>A warm room,<br>a French table</h2>
+        <p>
+          Café Lumière began with one idea: bring the unhurried ritual of a
+          Parisian café to a corner of Alexandria. Every morning our bakers
+          shape butter croissants by hand, our baristas pull slow espresso,
+          and our doors open onto a room dressed in green velvet and warm light.
+        </p>
+        <p>
+          Whether you're here for a quiet coffee, a pastry with a friend, or a
+          full afternoon at a window table, we hope it feels like home — just
+          with slightly better croissants.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       MENU SECTION
+       Each menu item is one <li class="menu-item">.
+       To add/remove/edit items, copy or edit these blocks.
+       data-category controls the filter buttons above the list.
+  ========================================================== -->
+  <section class="menu" id="menu">
+    <div class="menu-inner">
+      <p class="section-kicker">Menu</p>
+      <h2>What we're serving</h2>
+
+      <!-- Filter buttons — JavaScript shows/hides items by category -->
+      <div class="menu-filters" id="menuFilters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="croissants">Croissants</button>
+        <button class="filter-btn" data-filter="hot">Hot Drinks</button>
+        <button class="filter-btn" data-filter="soft">Soft Drinks</button>
+      </div>
+
+      <!-- ---------- CATEGORY 1: FRENCH CROISSANTS ---------- -->
+      <h3 class="menu-category">French Croissants</h3>
+      <ul class="menu-list" data-group="croissants">
+
+        <li class="menu-item" data-category="croissants">
+          <!-- Change this URL to replace the image -->
+          <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=200&q=80" alt="Classic Butter Croissant">
+          <div class="menu-item-body">
+            <div class="menu-item-top">
+              <h4>Classic Butter Croissant</h4>
+              <span class="menu-line"></span>
+              <span class="menu-price">85 EGP</span>
+            </div>
+            <p>Laminated dough, all butter, baked to a golden, flaking crust.</p>
+          </div>
+        </li>
+
+        <li class="menu-item" data-category="croissants">
+          <img src="https://images.unsplash.com/photo-1621236378699-8597faf6a176?auto=format&fit=crop&w=200&q=80" alt="Almond Croissant">
+          <div class="menu-item-body">
+            <div class="menu-item-top">
+              <h4>Almond Croissant</h4>
+              <span class="menu-line"></span>
+              <span class="menu-price">110 EGP</span>
+            </div>
+            <p>Filled with almond cream, topped with toasted almonds and sugar.</p>
+          </div>
+        </li>
+
+        <li class="menu-item" data-category="croissants">
+          <img src="https://images.unsplash.com/photo-1623334044303-241021148842?auto=format&fit=crop&w=200&q=80" alt="Chocolate Croissant">
+          <div class="menu-item-body">
+            <div class="menu-item-top">
+              <h4>Chocolate Croissant</h4>
+              <span class="menu-line"></span>
+              <span class="menu-price">100 EGP</span>
+            </div>
+            <p>Pain au chocolat with two batons of dark chocolate baked inside.</p>
+          </div>
+        </li>
+
+        <li class="menu-item" data-category="croissants">
+          <img src="https://images.unsplash.com/photo-1600100397608-f0cf9d0a5382?auto=format&fit=crop&w=200&q=80" alt="Pistachio Croissant">
+          <div class="menu-item-body">
+            <div class="menu-item-top">
+              <h4>Pistachio Croissant</h4>
+              <span class="menu-line"></span>
+              <span class="menu-price">130 EGP</span>
+            </div>
+            <p>Pistachio cream filling, glazed and finished with crushed pistachio.</p>
+          </div>
+        </li>
+
+        <li class="menu-item" data-category="croissants">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=200&q=80" alt="Strawberry Croissant">
+          <div class="menu-item-body">
+            <div class="menu-item-top">
+              <h4>Strawberry Croissant</h4>
+              <span class="menu-line"></span>
+              <span class="menu-price">115 EGP</span>
+            </div>
+            <p>Vanilla pastry cream and fresh strawberries over a buttery base.</p>
+          </div>
+        </li>
+
+        <li class="menu-item" data-category="croissants">
+          <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=200&q=80" alt="Ham and Cheese Croissant">
+          <div class="menu-item-body">
+            <div class="menu-item-top">
+              <h4>Ham &amp; Cheese Croissant</h4>
+              <span class="menu-line"></span>
+              <span class="menu-price">140 EGP</span>
+            </div>
+            <p>A savoury bake with smoked ham and melted Gruyère cheese.</p>
+          </div>
+        </li>
+      </ul>
+
+      <!-- ---------- CATEGORY 2: HOT DRINKS ---------- -->
+      <h3 class="menu-category">Hot Drinks</h3>
+      <ul class="menu-list" data-group="hot">
+
+        <li class="menu-item" data-category="hot">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=200&q=80" alt="Café Crème">
+          <div class="menu-item-body">
+            <div class="menu-item-top">
+              <h4>Café Crème</h4>
+              <span class="menu-line"></span>
+              <span class="menu-price">90 EGP</span>
+            </div>
+            <p>Espresso topped with warm steamed milk, served in a wide cup.</p>
+          </div>
+        </li>
+
+        <li class="menu-item" data-category="hot">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=200&q=80" alt="Espresso">
+          <div class="menu-item-body">
+            <div class="menu-item-top">
+              <h4>Espresso</h4>
+              <span class="menu-line"></span>
+              <span class="menu-price">65 EGP</span>
+            </div>
+            <p>A short, concentrated shot pulled from a dark French roast.</p>
+          </div>
+        </li>
+
+        <li class="menu-item" data-category="hot">
+          <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=200&q=80" alt="Cappuccino">
+          <div class="menu-item-body">
+            <div class="menu-item-top">
+              <h4>Cappuccino</h4>
+              <span class="menu-line"></span>
+              <span class="menu-price">95 EGP</span>
+            </div>
+            <p>Equal parts espresso, steamed milk and foam, dusted with cocoa.</p>
+          </div>
+        </li>
+
+        <li class="menu-item" data-category="hot">
+          <img src="https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=200&q=80" alt="Hot Chocolate">
+          <div class="menu-item-body">
+            <div class="menu-item-top">
+              <h4>Hot Chocolate</h4>
+              <span class="menu-line"></span>
+              <span class="menu-price">105 EGP</span>
+            </div>
+            <p>Melted dark chocolate and warm milk, finished with whipped cream.</p>
+          </div>
+        </li>
+      </ul>
+
+      <!-- ---------- CATEGORY 3: SOFT DRINKS ---------- -->
+      <h3 class="menu-category">Soft Drinks</h3>
+      <ul class="menu-list" data-group="soft">
+
+        <li class="menu-item" data-category="soft">
+          <img src="https://images.unsplash.com/photo-1621263764928-df1444c5e859?auto=format&fit=crop&w=200&q=80" alt="Fresh Lemonade">
+          <div class="menu-item-body">
+            <div class="menu-item-top">
+              <h4>Fresh Lemonade</h4>
+              <span class="menu-line"></span>
+              <span class="menu-price">75 EGP</span>
+            </div>
+            <p>Hand-squeezed lemons, still water, a touch of mint and sugar.</p>
+          </div>
+        </li>
+
+        <li class="menu-item" data-category="soft">
+          <img src="https://images.unsplash.com/photo-1523371683702-c3fca4b1b90f?auto=format&fit=crop&w=200&q=80" alt="Sparkling Water">
+          <div class="menu-item-body">
+            <div class="menu-item-top">
+              <h4>Sparkling Water</h4>
+              <span class="menu-line"></span>
+              <span class="menu-price">55 EGP</span>
+            </div>
+            <p>Chilled and lightly carbonated, served with a slice of lime.</p>
+          </div>
+        </li>
+
+        <li class="menu-item" data-category="soft">
+          <img src="https://images.unsplash.com/photo-1499638673689-79a0b5115d87?auto=format&fit=crop&w=200&q=80" alt="Iced Tea">
+          <div class="menu-item-body">
+            <div class="menu-item-top">
+              <h4>Iced Tea</h4>
+              <span class="menu-line"></span>
+              <span class="menu-price">70 EGP</span>
+            </div>
+            <p>Slow-steeped black tea over ice with a hint of peach.</p>
+          </div>
+        </li>
+
+        <li class="menu-item" data-category="soft">
+          <img src="https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=200&q=80" alt="Orange Fizz">
+          <div class="menu-item-body">
+            <div class="menu-item-top">
+              <h4>Orange Fizz</h4>
+              <span class="menu-line"></span>
+              <span class="menu-price">80 EGP</span>
+            </div>
+            <p>Fresh orange juice topped with sparkling water over ice.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       RESERVATION SECTION
+       Time slots are plain buttons — to add/remove a time,
+       add or remove one <button class="time-slot"> below.
+  ========================================================== -->
+  <section class="reserve" id="reserve">
+    <div class="reserve-inner">
+      <p class="section-kicker">Reserve</p>
+      <h2>Book a table</h2>
+      <p class="reserve-intro">Choose a date, party size and time — we'll hold your table.</p>
+
+      <form id="reservationForm" class="reserve-form" novalidate>
+
+        <!-- Date + Guests row -->
+        <div class="reserve-row">
+          <div class="field">
+            <label for="resDate">Date</label>
+            <input type="date" id="resDate" name="resDate" required>
+          </div>
+
+          <div class="field">
+            <label>Number of guests</label>
+            <div class="guest-options" id="guestOptions">
+              <button type="button" class="guest-btn" data-guests="1">1</button>
+              <button type="button" class="guest-btn" data-guests="2">2</button>
+              <button type="button" class="guest-btn" data-guests="3">3</button>
+              <button type="button" class="guest-btn" data-guests="4">4</button>
+              <button type="button" class="guest-btn" data-guests="5+">5+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Time slots -->
+        <div class="field">
+          <label>Available time</label>
+          <div class="time-slots" id="timeSlots">
+            <button type="button" class="time-slot" data-time="10:00 AM">10:00 AM</button>
+            <button type="button" class="time-slot" data-time="11:00 AM">11:00 AM</button>
+            <button type="button" class="time-slot" data-time="12:00 PM">12:00 PM</button>
+            <button type="button" class="time-slot" data-time="1:00 PM">1:00 PM</button>
+            <button type="button" class="time-slot" data-time="2:00 PM">2:00 PM</button>
+            <button type="button" class="time-slot" data-time="3:00 PM">3:00 PM</button>
+            <button type="button" class="time-slot" data-time="4:00 PM">4:00 PM</button>
+            <button type="button" class="time-slot" data-time="5:00 PM">5:00 PM</button>
+            <button type="button" class="time-slot" data-time="6:00 PM">6:00 PM</button>
+            <button type="button" class="time-slot" data-time="7:00 PM">7:00 PM</button>
+            <button type="button" class="time-slot" data-time="8:00 PM">8:00 PM</button>
+            <button type="button" class="time-slot" data-time="9:00 PM">9:00 PM</button>
+          </div>
+        </div>
+
+        <!-- Shows "Tuesday 12 May at 7:00 PM for 2 guests" once selections are made -->
+        <p class="selection-summary" id="selectionSummary"></p>
+
+        <!-- Contact details -->
+        <div class="reserve-row">
+          <div class="field">
+            <label for="resName">Full name</label>
+            <input type="text" id="resName" name="resName" placeholder="Your name" required>
+          </div>
+          <div class="field">
+            <label for="resPhone">Phone number</label>
+            <input type="tel" id="resPhone" name="resPhone" placeholder="01xxxxxxxxx" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="resEmail">Email</label>
+          <input type="email" id="resEmail" name="resEmail" placeholder="you@example.com" required>
+        </div>
+
+        <!-- Where validation error messages appear -->
+        <p class="form-error" id="formError"></p>
+
+        <button type="submit" class="btn btn-primary reserve-submit">Confirm Reservation</button>
+      </form>
+
+      <!-- Confirmation message, hidden until the form is submitted successfully -->
+      <div class="confirmation" id="confirmation" hidden>
+        <h3>Table reserved</h3>
+        <p id="confirmationText"></p>
+        <button class="btn btn-outline" id="newReservationBtn">Make another reservation</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CONTACT / LOCATION SECTION
+       Edit address, hours, phone and email directly below.
+  ========================================================== -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <p class="section-kicker">Visit Us</p>
+        <h2>Find our table</h2>
+
+        <dl class="contact-list">
+          <div>
+            <dt>Address</dt>
+            <dd>14 Rue Fouad, Corniche El Nil, Alexandria, Egypt</dd>
+          </div>
+          <div>
+            <dt>Opening Hours</dt>
+            <dd>Every day, 8:00 AM – 10:00 PM</dd>
+          </div>
+          <div>
+            <dt>Phone</dt>
+            <dd><a href="tel:+201000000000">+20 100 000 0000</a></dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd><a href="mailto:hello@cafelumiere.eg">hello@cafelumiere.eg</a></dd>
+          </div>
+        </dl>
+
+        <!-- Social links — replace the # with your real profile URLs -->
+        <div class="social-links">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 .01 4.1.06 1.1.05 1.8.22 2.5.47.7.27 1.2.6 1.8 1.15.6.6.9 1.1 1.15 1.8.25.7.42 1.4.47 2.5.05 1.1.06 1.4.06 4.1s-.01 3-.06 4.1c-.05 1.1-.22 1.8-.47 2.5-.27.7-.6 1.2-1.15 1.8-.6.6-1.1.9-1.8 1.15-.7.25-1.4.42-2.5.47-1.1.05-1.4.06-4.1.06s-3-.01-4.1-.06c-1.1-.05-1.8-.22-2.5-.47-.7-.27-1.2-.6-1.8-1.15-.6-.6-.9-1.1-1.15-1.8-.25-.7-.42-1.4-.47-2.5C2.01 15 2 14.7 2 12s.01-3 .06-4.1c.05-1.1.22-1.8.47-2.5.27-.7.6-1.2 1.15-1.8.6-.6 1.1-.9 1.8-1.15.7-.25 1.4-.42 2.5-.47C9 2.01 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M13.5 21v-7.5H16l.4-3H13.5V8.4c0-.9.25-1.5 1.55-1.5H16.5V4.3C16.2 4.26 15.2 4.17 14 4.17c-2.4 0-4.05 1.47-4.05 4.17v2.33H7.5v3h2.45V21h3.55z"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M14.5 3h2.4c.15 1.6 1.2 2.9 2.7 3.4v2.5c-1.05-.05-2-.35-2.9-.9v6.35c0 3-2.45 5.4-5.5 5.4s-5.5-2.4-5.5-5.4 2.45-5.4 5.5-5.4c.3 0 .6.02.9.07v2.55a3 3 0 1 0 2.4 2.93V3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-map">
+        <!-- Simple embedded map, no API key needed -->
+        <iframe
+          title="Café Lumière location"
+          src="https://www.google.com/maps?q=Alexandria,Egypt&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <p class="logo">Café Lumière</p>
+        <p>A small French café for coffee, croissants and quiet afternoons.</p>
+      </div>
+
+      <nav class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#reserve">Reserve</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="social-links footer-social">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 .01 4.1.06 1.1.05 1.8.22 2.5.47.7.27 1.2.6 1.8 1.15.6.6.9 1.1 1.15 1.8.25.7.42 1.4.47 2.5.05 1.1.06 1.4.06 4.1s-.01 3-.06 4.1c-.05 1.1-.22 1.8-.47 2.5-.27.7-.6 1.2-1.15 1.8-.6.6-1.1.9-1.8 1.15-.7.25-1.4.42-2.5.47-1.1.05-1.4.06-4.1.06s-3-.01-4.1-.06c-1.1-.05-1.8-.22-2.5-.47-.7-.27-1.2-.6-1.8-1.15-.6-.6-.9-1.1-1.15-1.8-.25-.7-.42-1.4-.47-2.5C2.01 15 2 14.7 2 12s.01-3 .06-4.1c.05-1.1.22-1.8.47-2.5.27-.7.6-1.2 1.15-1.8.6-.6 1.1-.9 1.8-1.15.7-.25 1.4-.42 2.5-.47C9 2.01 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M13.5 21v-7.5H16l.4-3H13.5V8.4c0-.9.25-1.5 1.55-1.5H16.5V4.3C16.2 4.26 15.2 4.17 14 4.17c-2.4 0-4.05 1.47-4.05 4.17v2.33H7.5v3h2.45V21h3.55z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <p class="footer-copy">&copy; <span id="year"></span> Café Lumière. All rights reserved.</p>
+  </footer>
+
+  <!-- Our own JavaScript, loaded last so the page content exists first -->
+  <script src="script.js"></script>
+</body>
+</html>

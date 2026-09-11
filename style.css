@@ -1,0 +1,829 @@
+/* =========================================================
+   CAFÉ LUMIÈRE — STYLESHEET
+   
+   HOW THIS FILE IS ORGANIZED (search for these section titles):
+   1. Design tokens (colors, fonts, spacing) — CHANGE COLORS HERE
+   2. Reset & base styles
+   3. Reusable pieces (buttons, section titles)
+   4. Navbar
+   5. Hero
+   6. About
+   7. Menu
+   8. Reservation
+   9. Contact
+   10. Footer
+   11. Responsive rules (tablet & mobile)
+========================================================= */
+
+/* ---------------------------------------------------------
+   1. DESIGN TOKENS
+   Change any value below and it updates the whole site.
+--------------------------------------------------------- */
+:root {
+  /* Colors — this is the easiest place to re-theme the site */
+  --ivory: #f6f1e7;         /* main background */
+  --cream: #efe6d8;         /* panel / alt background */
+  --white: #fffdf9;         /* card background */
+  --forest: #1e3d2f;        /* primary green (buttons, links) */
+  --forest-dark: #142a20;   /* darker green (hover states) */
+  --ink: #221f1b;           /* near-black text */
+  --ink-soft: #4a453d;      /* softer body text */
+  --gold: #b08d57;          /* thin accent lines / dividers */
+  --border: rgba(34, 31, 27, 0.12);
+
+  /* Fonts */
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Jost", sans-serif;
+
+  /* Layout */
+  --max-width: 1160px;
+  --radius: 2px; /* we keep corners almost square — fits the vintage/French look */
+}
+
+/* ---------------------------------------------------------
+   2. RESET & BASE STYLES
+--------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--ivory);
+  color: var(--ink);
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, dl {
+  list-style: none;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.15;
+}
+
+/* Respect people who've asked for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible keyboard focus for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--forest);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------
+   3. REUSABLE PIECES
+--------------------------------------------------------- */
+section {
+  padding: 100px 24px;
+}
+
+.hero-inner, .about-inner, .menu-inner, .reserve-inner, .contact-inner, .nav-inner, .footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section-kicker {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--forest);
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: clamp(2rem, 3.5vw, 2.7rem);
+  margin-bottom: 24px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 14px 30px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--forest);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--forest-dark);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--forest);
+  border-color: var(--forest);
+}
+
+.btn-outline:hover {
+  background: var(--forest);
+  color: var(--white);
+}
+
+/* ---------------------------------------------------------
+   4. NAVBAR
+--------------------------------------------------------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(246, 241, 231, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--forest);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links a {
+  font-size: 0.95rem;
+  color: var(--ink);
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav-links a:not(.nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 1px;
+  background: var(--forest);
+  transition: width 0.25s ease;
+}
+
+.nav-links a:not(.nav-cta):hover::after {
+  width: 100%;
+}
+
+.nav-cta {
+  padding: 10px 20px;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* ---------------------------------------------------------
+   5. HERO
+--------------------------------------------------------- */
+.hero {
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-kicker {
+  font-size: 0.85rem;
+  color: var(--forest);
+  margin-bottom: 18px;
+}
+
+.hero-text h1 {
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  margin-bottom: 22px;
+}
+
+.hero-desc {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  max-width: 46ch;
+  margin-bottom: 34px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-image {
+  position: relative;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border: 8px solid var(--white);
+  box-shadow: 0 20px 40px rgba(34, 31, 27, 0.18);
+  /* the slight offset/rotation gives the vintage postcard feel */
+  transform: rotate(1.2deg);
+}
+
+.hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 18px -18px -18px 18px;
+  border: 1px solid var(--gold);
+  z-index: -1;
+}
+
+/* ---------------------------------------------------------
+   6. ABOUT
+--------------------------------------------------------- */
+.about {
+  background: var(--cream);
+}
+
+.about-inner {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.about-image img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.about-text p {
+  color: var(--ink-soft);
+  max-width: 52ch;
+  margin-bottom: 16px;
+}
+
+/* ---------------------------------------------------------
+   7. MENU
+--------------------------------------------------------- */
+.menu-inner h2 {
+  max-width: 20ch;
+}
+
+.menu-filters {
+  display: flex;
+  gap: 10px;
+  margin: 28px 0 48px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--ink-soft);
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--forest);
+  color: var(--forest);
+}
+
+.filter-btn.active {
+  background: var(--forest);
+  color: var(--white);
+  border-color: var(--forest);
+}
+
+.menu-category {
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--forest);
+  margin: 44px 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--gold);
+}
+
+.menu-category:first-of-type {
+  margin-top: 0;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 20px;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  transition: opacity 0.2s ease;
+}
+
+.menu-item img {
+  width: 76px;
+  height: 76px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.menu-item-top {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.menu-item h4 {
+  font-size: 1.15rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* the dotted line that runs between the item name and the price,
+   like a printed café menu */
+.menu-line {
+  flex: 1;
+  border-bottom: 1px dotted var(--border);
+  transform: translateY(-4px);
+}
+
+.menu-price {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--forest);
+  white-space: nowrap;
+}
+
+.menu-item p {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  margin-top: 4px;
+  max-width: 60ch;
+}
+
+/* Used by JavaScript to hide items that don't match the active filter */
+.menu-item.is-hidden {
+  display: none;
+}
+
+/* ---------------------------------------------------------
+   8. RESERVATION
+--------------------------------------------------------- */
+.reserve {
+  background: var(--forest);
+  color: var(--white);
+}
+
+.reserve .section-kicker {
+  color: var(--gold);
+}
+
+.reserve h2 {
+  color: var(--white);
+}
+
+.reserve-intro {
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 40px;
+  max-width: 50ch;
+}
+
+.reserve-form {
+  max-width: 760px;
+}
+
+.reserve-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.field {
+  margin-bottom: 24px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.88rem;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.field input {
+  width: 100%;
+  padding: 13px 14px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius);
+  color: var(--white);
+}
+
+.field input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Guest count pills */
+.guest-options {
+  display: flex;
+  gap: 10px;
+}
+
+.guest-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: var(--white);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.guest-btn:hover {
+  border-color: var(--gold);
+}
+
+.guest-btn.selected {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--forest-dark);
+}
+
+/* Time slot grid */
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.time-slot {
+  padding: 12px 8px;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius);
+  color: var(--white);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.time-slot:hover {
+  border-color: var(--gold);
+}
+
+.time-slot.selected {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--forest-dark);
+  font-weight: 500;
+}
+
+.selection-summary {
+  color: var(--gold);
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  margin: 18px 0 6px;
+  min-height: 1.4em;
+}
+
+.form-error {
+  color: #f2c2b0;
+  font-size: 0.88rem;
+  min-height: 1.2em;
+  margin-bottom: 8px;
+}
+
+.reserve-submit {
+  margin-top: 10px;
+}
+
+/* Confirmation panel, shown after successful submit */
+.confirmation {
+  max-width: 560px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 36px;
+  border-radius: var(--radius);
+}
+
+.confirmation h3 {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.confirmation p {
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 22px;
+}
+
+/* ---------------------------------------------------------
+   9. CONTACT
+--------------------------------------------------------- */
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.contact-list {
+  margin-top: 30px;
+}
+
+.contact-list > div {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-list dt {
+  font-size: 0.82rem;
+  color: var(--forest);
+  margin-bottom: 6px;
+}
+
+.contact-list dd a:hover {
+  color: var(--forest);
+}
+
+.social-links {
+  display: flex;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.social-links svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--ink);
+}
+
+.social-links a:hover {
+  background: var(--forest);
+  border-color: var(--forest);
+}
+
+.social-links a:hover svg {
+  fill: var(--white);
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  border: 0;
+  border-radius: var(--radius);
+}
+
+/* ---------------------------------------------------------
+   10. FOOTER
+--------------------------------------------------------- */
+.footer {
+  background: var(--forest-dark);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 60px 24px 24px;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+
+.footer .logo {
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.footer-brand p:last-child {
+  max-width: 34ch;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+.footer-social a {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.footer-social svg {
+  fill: rgba(255, 255, 255, 0.85);
+}
+
+.footer-copy {
+  text-align: center;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 22px;
+}
+
+/* ---------------------------------------------------------
+   11. RESPONSIVE RULES
+--------------------------------------------------------- */
+
+/* Tablet */
+@media (max-width: 900px) {
+  section { padding: 72px 24px; }
+
+  .hero-inner,
+  .about-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .about-inner { gap: 36px; }
+  .about-image { order: -1; }
+
+  .contact-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--ivory);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .nav-links.open {
+    max-height: 400px;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 16px 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .nav-links a.nav-cta {
+    margin: 16px 24px;
+    width: calc(100% - 48px);
+    text-align: center;
+  }
+
+  .hero-image img {
+    height: 320px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .hero-buttons .btn {
+    text-align: center;
+  }
+
+  .reserve-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .time-slots {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .guest-options {
+    flex-wrap: wrap;
+  }
+
+  .menu-item {
+    grid-template-columns: 56px 1fr;
+  }
+
+  .menu-item img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .menu-item-top {
+    flex-wrap: wrap;
+  }
+
+  .menu-line {
+    display: none;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
