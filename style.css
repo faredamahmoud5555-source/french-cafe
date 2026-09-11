@@ -21,14 +21,14 @@
 --------------------------------------------------------- */
 :root {
   /* Colors — this is the easiest place to re-theme the site */
-  --ivory: #f6f1e7;         /* main background */
+  --ivory: #fafaf9;         /* main background */
   --cream: #efe6d8;         /* panel / alt background */
   --white: #fffdf9;         /* card background */
   --forest: #1e3d2f;        /* primary green (buttons, links) */
   --forest-dark: #142a20;   /* darker green (hover states) */
   --ink: #221f1b;           /* near-black text */
   --ink-soft: #4a453d;      /* softer body text */
-  --gold: #b08d57;          /* thin accent lines / dividers */
+  --gold: #020100;          /* thin accent lines / dividers */
   --border: rgba(34, 31, 27, 0.12);
 
   /* Fonts */
@@ -165,7 +165,7 @@ h2 {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(246, 241, 231, 0.92);
+  background: rgba(250, 250, 250, 0.92);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--border);
 }
